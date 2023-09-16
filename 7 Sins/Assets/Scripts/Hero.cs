@@ -5,14 +5,32 @@ using UnityEngine;
 
 public class Hero : MonoBehaviour
 {
+    [Header("Movement Settings")]
     [SerializeField] private float _movementSpeed;
     [SerializeField] private float _jumpSpeed;
     [SerializeField] private float _floatingSpeed;
+    [SerializeField] private float _dashingSpeed;
+    [SerializeField] private float _dashingTime;
+    [SerializeField] private float _dashingCooldown;
 
-    public bool isJumpButtonPressed;
+
+    [Header("Shooting Settings")]
+    [SerializeField] private GameObject _bulletPrefab;
+    [SerializeField] private Transform _shootingPosition;
+    [SerializeField] private float _shootingDelay;
+
+
+
+
+    [NonSerialized] public bool isJumpButtonPressed;
+    [NonSerialized] public bool isShootingButtonPressed;
+    [NonSerialized] public bool isDashing;
+    [NonSerialized] public bool canDash = true;
+
     private Vector2 _direction;
     private Rigidbody2D _rigidbody;
     private GroundCheck _groundCheck;
+    
 
     private void Awake()
     {
@@ -20,9 +38,10 @@ public class Hero : MonoBehaviour
         _groundCheck = GetComponent<GroundCheck>();
     }
    
-    void Start()
+    void Update()
     {
-        
+       
+
     }
     private void FixedUpdate()
     {
@@ -31,22 +50,25 @@ public class Hero : MonoBehaviour
     }
     private void HorizontalMovement()
     {
-        var xVelocity = _direction.x;
-        _rigidbody.velocity = new Vector2(xVelocity * _movementSpeed, _rigidbody.velocity.y);
+        if (!isDashing)
+        {
+            var xVelocity = _direction.x;
+            _rigidbody.velocity = new Vector2(xVelocity * _movementSpeed, _rigidbody.velocity.y);
+        }
     }
     
     public void SetDirection(Vector2 direction)
     {
         _direction = direction;
     }
-    public float Jump()
+    public void Jump()
     {
         if (_groundCheck.IsGrounded())
         {
             _rigidbody.velocity = Vector2.zero;
             _rigidbody.AddForce(Vector2.up * _jumpSpeed, ForceMode2D.Impulse);
         }
-        return _rigidbody.velocity.y;
+        
 
 
     }
@@ -54,7 +76,39 @@ public class Hero : MonoBehaviour
     {
         if (isJumpButtonPressed && !_groundCheck.IsGrounded() && _rigidbody.velocity.y < 0)
         {
-            _rigidbody.velocity = new Vector2(_direction.normalized.x, _direction.y* _floatingSpeed);
+            _rigidbody.velocity = new Vector2(_direction.x, _direction.y );
         }
+    }
+
+    public IEnumerator Shoot()
+    {
+        while (isShootingButtonPressed)
+        {
+            var bullet = Instantiate(_bulletPrefab, _shootingPosition.position, Quaternion.identity);
+            yield return new WaitForSeconds(_shootingDelay);
+        }
+       
+    }
+
+    public IEnumerator Dash()
+    {
+        if (canDash)
+        {
+            isDashing = true;
+
+            var dashingVector = new Vector2(_direction.x, 0);
+            _rigidbody.gravityScale = 0;
+            _rigidbody.velocity = Vector2.zero;
+
+            _rigidbody.AddForce(dashingVector * _jumpSpeed, ForceMode2D.Impulse);
+        }
+        canDash = false;
+        yield return new WaitForSeconds(_dashingTime);
+
+        _rigidbody.gravityScale = 1;
+        isDashing = false;
+
+        yield return new WaitForSeconds(_dashingCooldown);
+        canDash = true;
     }
 }

@@ -3,8 +3,10 @@ using UnityEngine;
 public class GroundCheck : MonoBehaviour
 {
     [SerializeField] private LayerMask _layer;
-    private Collider2D _collider;
     [SerializeField] private float _threshhold = 0.1f;
+
+    private Collider2D _collider;
+
     private void Awake()
     {
         _collider = GetComponent<Collider2D>(); 

@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Environment
   layers:
   - Default
   - TransparentFX
@@ -14,7 +15,7 @@ TagManager:
   - Ground
   - Hero
   - Enemy
-  - 
+  - Projectile
   - 
   - 
   - 
@@ -46,4 +47,7 @@ TagManager:
     locked: 0
   - name: Objects
     uniqueID: 1923320267
+    locked: 0
+  - name: Cursor
+    uniqueID: 278427351
     locked: 0
