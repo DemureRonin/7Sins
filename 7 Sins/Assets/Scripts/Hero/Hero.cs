@@ -38,11 +38,6 @@ public class Hero : MonoBehaviour
         _groundCheck = GetComponent<GroundCheck>();
     }
    
-    void Update()
-    {
-       
-
-    }
     private void FixedUpdate()
     {
         HorizontalMovement();
@@ -68,9 +63,6 @@ public class Hero : MonoBehaviour
             _rigidbody.velocity = Vector2.zero;
             _rigidbody.AddForce(Vector2.up * _jumpSpeed, ForceMode2D.Impulse);
         }
-        
-
-
     }
     public void FloatMidAir()
     {
@@ -87,7 +79,6 @@ public class Hero : MonoBehaviour
             var bullet = Instantiate(_bulletPrefab, _shootingPosition.position, Quaternion.identity);
             yield return new WaitForSeconds(_shootingDelay);
         }
-       
     }
 
     public IEnumerator Dash()
