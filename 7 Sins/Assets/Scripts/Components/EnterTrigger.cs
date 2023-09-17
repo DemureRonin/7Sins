@@ -1,10 +1,9 @@
 using System;
 using UnityEngine;
-using UnityEngine.Events;
 
-public class OnTriggerEnter : MonoBehaviour
+public class EnterTrigger : MonoBehaviour
 {
-    [SerializeField] private Actions[] _actions;
+    [SerializeField] protected Actions[] _actions;
     
 
     private void OnTriggerEnter2D(Collider2D otherCollision)
