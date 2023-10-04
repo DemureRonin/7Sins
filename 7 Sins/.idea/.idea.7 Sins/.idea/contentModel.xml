@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Unity\Projects\_GitHub\7SinsGit\7Sisns\7 Sins" t="IncludeRecursive">
+      <e p="7 Sins.sln" t="IncludeFlat" />
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Materials" t="Include" />
+        <e p="PlayerControls" t="Include" />
+        <e p="Prefabs" t="Include">
+          <e p="MobProjectiles" t="Include" />
+          <e p="Ophanim" t="Include" />
+          <e p="Samael" t="Include" />
+        </e>
+        <e p="Scenes" t="Include" />
+        <e p="Scripts" t="Include">
+          <e p="Components" t="Include">
+            <e p="DamageComponent.cs" t="Include" />
+            <e p="DestroyComponent.cs" t="Include" />
+            <e p="EnterTrigger.cs" t="Include" />
+            <e p="ExitTrigger.cs" t="Include" />
+            <e p="GroundCheck.cs" t="Include" />
+            <e p="HealthComponent.cs" t="Include" />
+            <e p="SpawnComponent.cs" t="Include" />
+            <e p="SpriteAnimations.cs" t="Include" />
+          </e>
+          <e p="Hero" t="Include">
+            <e p="ArmMovement.cs" t="Include" />
+            <e p="Bullet.cs" t="Include" />
+            <e p="CursorCrosshair.cs" t="Include" />
+            <e p="Hero.cs" t="Include" />
+            <e p="PlayerInput.cs" t="Include" />
+          </e>
+          <e p="MobProjectiles" t="Include">
+            <e p="Projectile.cs" t="Include" />
+          </e>
+          <e p="Mobs" t="Include">
+            <e p="RangeMobAI.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Sprites" t="Include">
+          <e p="Hero" t="Include">
+            <e p="Bulllet" t="Include" />
+          </e>
+          <e p="LevelGrayBox" t="Include" />
+          <e p="Ophanim" t="Include" />
+        </e>
+      </e>
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive" />
+      <e p="Temp\Bin" t="ExcludeRecursive" />
+    </e>
+    <e p="C:\Users\medve\AppData\Local\JetBrains\Rider2020.3\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\medve\AppData\Local\JetBrains\Rider2020.3\resharper-host\Local\Transient\Rider\v203\SolutionCaches\_7 Sins.248225483.00" t="ExcludeRecursive" />
+  </component>
+</project>

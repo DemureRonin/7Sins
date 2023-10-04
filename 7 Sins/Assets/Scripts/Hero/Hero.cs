@@ -43,7 +43,7 @@ public class Hero : MonoBehaviour
     private void FixedUpdate()
     {
         HorizontalMovement();
-        FloatMidAir();
+       FloatMidAir();
     }
     private void HorizontalMovement()
     {
@@ -60,11 +60,9 @@ public class Hero : MonoBehaviour
     }
     public void Jump()
     {
-        if (_groundCheck.IsGrounded())
-        {
-            _rigidbody.velocity = Vector2.zero;
-            _rigidbody.AddForce(Vector2.up * _jumpSpeed, ForceMode2D.Impulse);
-        }
+        if (!_groundCheck.IsGrounded()) return;
+        _rigidbody.velocity = Vector2.zero;
+        _rigidbody.AddForce(Vector2.up * _jumpSpeed, ForceMode2D.Impulse);
     }
     public void FloatMidAir()
     {
