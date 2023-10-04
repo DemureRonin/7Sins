@@ -30,14 +30,14 @@ public class Hero : MonoBehaviour
     private Vector2 _direction;
     private Rigidbody2D _rigidbody;
     private GroundCheck _groundCheck;
-    private PolygonCollider2D _polygonCollider;
+    private HealthComponent _healthComponent;
     
 
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _groundCheck = GetComponent<GroundCheck>();
-        _polygonCollider = GetComponent<PolygonCollider2D>();
+        _healthComponent = GetComponent<HealthComponent>();
     }
    
     private void FixedUpdate()
@@ -92,12 +92,12 @@ public class Hero : MonoBehaviour
             _rigidbody.velocity = Vector2.zero;
 
             _rigidbody.AddForce(dashingVector * _jumpSpeed, ForceMode2D.Impulse);
-            _polygonCollider.enabled = false; 
+            _healthComponent.enabled = false; 
         }
         canDash = false;
         yield return new WaitForSeconds(_dashingTime);
 
-        _polygonCollider.enabled = true;
+        _healthComponent.enabled = true;
         _rigidbody.gravityScale = 1;
         isDashing = false;
 
